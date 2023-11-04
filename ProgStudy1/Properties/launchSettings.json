@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ProgStudy1": {
+      "commandName": "Project"
+    },
+    "プロファイル 1": {
+      "commandName": "Executable"
+    }
+  }
+}
