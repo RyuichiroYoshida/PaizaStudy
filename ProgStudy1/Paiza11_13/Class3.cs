@@ -15,14 +15,18 @@ class Class3
         if (n <= 2)
         {
             Console.WriteLine(1);
+            return;
         }
-        if (n <= 3)
+        if (n <= 5)
+        {
             Console.WriteLine(2);
+            return;
+        }
         else
         {
             for (int i = 3; i < n; i++)
             {
-                for (int j = 3; j <= Math.Sqrt(i); j += 2)
+                for (double j = 3; j <= Math.Sqrt(i); j += 2)
                 {
                     if (i % j != 0)
                         continue;

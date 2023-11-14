@@ -5,17 +5,16 @@ class Class6
 {
     static void Main()
     {
-        for (var i = 0; i < 24; i++)
+        var max = 0;
+        for (var i = 98; 1 <= i; i--)
         {
-            for (var j = 0; j < 60; j++)
+            for (var j = 1; j <= 98; j++)
             {
-                if (i + j % 15 == 0 || i + j == 0)
-                    Console.WriteLine("FIZZBUZZ");
-                else if (i + j % 3 == 0)
-                    Console.WriteLine("FIZZ");
-                else if (i + j % 5 == 0)
-                    Console.WriteLine("BUZZ");
+                if (i * i * i + j * j * j < 100000)
+                    if (max < i * j)
+                        max = i * j;
             }
         }
+        Console.WriteLine(max);
     }
 }

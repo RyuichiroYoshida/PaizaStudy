@@ -7,14 +7,10 @@ class Class4
     {
         var count = 0;
         var n = int.Parse(Console.ReadLine());
-        for (int i = 2; i <= n; i++)
+        for (int i = 2; i <= n; i += 2)
         {
-            n *= i;
-        }
-        while (n >= 0)
-        {
-            n /= 2;
-            count++;
+            for (int j = i; j % 2 == 0; count++)
+                j /= 2;
         }
         Console.WriteLine(count);
     }

@@ -5,17 +5,24 @@ class Class7
 {
     static void Main()
     {
-        for (var i = 0; i < 24; i++)
+        var nums = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+        var coinA = nums[0];
+        var coinB = nums[1];
+        var payment = nums[2];
+        var ans = payment;
+
+        for (int i = 0; i <= payment / coinA; i++)
         {
-            for (var j = 0; j < 60; j++)
+            for (int j = 0; i <= payment / coinB; i++)
             {
-                if (i + j % 15 == 0 || i + j == 0)
-                    Console.WriteLine("FIZZBUZZ");
-                else if (i + j % 3 == 0)
-                    Console.WriteLine("FIZZ");
-                else if (i + j % 5 == 0)
-                    Console.WriteLine("BUZZ");
+                if (coinA * i + coinB * j <= payment)
+                {
+                    payment -= coinA * i + coinB * j;
+                }
+                else
+                    break;
             }
         }
+        //Console.WriteLine(Math);
     }
 }

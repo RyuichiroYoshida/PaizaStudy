@@ -9,12 +9,12 @@ class Class5
         {
             for (var j = 0; j < 60; j++)
             {
-                if (i + j % 15 == 0 || i + j == 0)
-                    Console.WriteLine("FIZZBUZZ");
-                else if (i + j % 3 == 0)
-                    Console.WriteLine("FIZZ");
-                else if (i + j % 5 == 0)
-                    Console.WriteLine("BUZZ");
+                if ((i + j) % 3 == 0)
+                    Console.Write("FIZZ");
+                else if ((i + j) % 5 == 0)
+                    Console.Write("BUZZ");
+                else
+                    Console.WriteLine();
             }
         }
     }
