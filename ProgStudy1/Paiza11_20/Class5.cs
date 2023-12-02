@@ -1,41 +1,42 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Paiaza11_20;
 class Class5
 {
     static void Main()
     {
-        var counter = 0;
-        var ans = "";
+        var flag = false;
         var num = int.Parse(Console.ReadLine());
         var nums = new int[num];
+        var ansList = new List<int>();
+        var ansStr = "no answer";
         for (int i = 0; i < num; i++)
             nums[i] = int.Parse(Console.ReadLine());
-        for (int i = 0; i < num; i++)
+        Array.Sort(nums);
+        for (int i = 1; i < 2 << num; i++)
         {
             for (int j = 0; j < num; j++)
             {
-                if (nums[i] + nums[j] == 777)
+                var n = (i >> j) & 1;
+                if (n == 1)
+                    ansList.Add(nums[j]);
+                if (ansList.Sum() == 777 && !flag)
                 {
-                    if (counter > 1)
+                    if (flag)
                     {
                         Console.WriteLine("multiple answers");
                         return;
                     }
-                    if (nums[i] < nums[j])
-                        ans = $"{nums[i].ToString()} {nums[j].ToString()}";
                     else
-                        ans = $"{nums[j].ToString()} {nums[i].ToString()}";
-                    counter++;
+                    {
+                        ansStr = string.Join(" ", ansList);
+                        flag = true;
+                    }
                 }
             }
         }
-        Console.WriteLine(ans ?? "no answer");
+        Console.WriteLine(ansStr);
     }
-
-    //private static int CheckNum(int[] nums)
-    //{
-    //    for (int i = 0;)
-    //    return;
-    //}
 }
