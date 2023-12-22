@@ -5,16 +5,28 @@ public class Class2_2
 {
     static void Main()
     {
-        var count = 0;
+        var maxSum = int.MinValue;
+        var ansNum = 0;
         var num = int.Parse(Console.ReadLine());
-        var nums = Console.ReadLine().Split();
-        for (int i = 0; i < num - 1; i++)
+        var nums = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+        if (num == 3)
         {
-            if (nums[i] == nums[i + 1])
+            Console.WriteLine(1);
+            return;
+        }
+        for (int i = 0; i < num - 2; i++)
+        {
+            var sum = 0;
+            for (int j = i; j < i + 3; j++)
             {
-                count++;
+                sum += nums[j];
+            }
+            if (sum > maxSum)
+            {
+                maxSum = sum;
+                ansNum = i;
             }
         }
-        Console.WriteLine(count);
+        Console.WriteLine(ansNum + 1);
     }
 }
