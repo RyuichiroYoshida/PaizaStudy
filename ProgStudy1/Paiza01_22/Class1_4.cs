@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ProgStudy1.Paiza01_22;
 public class Class1_4
@@ -6,29 +7,31 @@ public class Class1_4
     static void Main()
     {
         var n = int.Parse(Console.ReadLine());
-        var minValue = int.MaxValue;
+        var rateList = new List<int>();
+        var maxMoney = 0;
         var minIndex = 0;
-        var maxValue = int.MinValue;
-        var maxIndex = 0;
+        var maxindex = 0;
         for (int i = 0; i < n; i++)
         {
-            var value = int.Parse(Console.ReadLine());
-            if (value < minValue)
+            rateList.Add(int.Parse(Console.ReadLine()));
+        }
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = i; j < n; j++)
             {
-                minValue = value;
-                minIndex = i;
-            }
-            if (value > maxValue)
-            {
-                maxValue = value;
-                maxIndex = i;
+                if (maxMoney < rateList[j] - rateList[i])
+                {
+                    maxMoney = rateList[j] - rateList[i];
+                    minIndex = i;
+                    maxindex = j;
+                }
             }
         }
-        if (minIndex >= maxIndex)
+        if (maxindex == minIndex)
         {
             Console.WriteLine("No");
             return;
         }
-        Console.WriteLine($"{minIndex + 1}\n{maxIndex + 1}");
+        Console.WriteLine($"{minIndex + 1}\n{maxindex + 1}");
     }
 }

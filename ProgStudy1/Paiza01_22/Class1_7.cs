@@ -1,24 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProgStudy1.Paiza01_22;
 public class Class1_7
 {
     static void Main()
     {
-        var workTimeList = new List<int[]>();
+        var workTimeDic = new SortedDictionary<int, int>();
+        var taskCount = 0;
         var n = int.Parse(Console.ReadLine());
         for (int i = 0; i < n; i++)
         {
-            workTimeList[i] = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+            var nums = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+            workTimeDic.Add(nums[1], nums[0]);
         }
-        workTimeList.Sort();
-        for (int i = 0; i < n; i++)
+        var checkKey = workTimeDic.First().Key;
+        foreach (var item in workTimeDic)
         {
-            for (int j = 0; j < n; j++)
+            if (checkKey <= item.Value)
             {
-
+                taskCount++;
+                checkKey = item.Key;
             }
         }
+        Console.WriteLine(taskCount);
     }
 }
